@@ -1,0 +1,79 @@
+{% include "header.html" %}
+
+<div class="container">
+    <div class="col-lg-8 col-md-10 mt-4 mb-4 mx-auto">
+
+        <div class="row g-0">
+            <div class="col-md-1">
+                <a href="{{url_for('home')}}">
+                    <img src="static/assets/images/letter.png" class="img-fluid rounded-start"
+                         alt="https://www.flaticon.com/free-animated-icons/write">
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 mt-4 mb-4 mx-auto">
+
+            <h2>
+                {{ today }}
+            </h2>
+
+            <a href="{{ url_for('add_new_task') }}"
+               name="add_row"
+               class="btn d-grid gap-2 col-2 mb-4 justify-content-center mx-auto btn-outline-success "
+            >+</a>
+
+            {% for task in all_tasks %}
+            {% if current_user.id == task.author_id: %}
+
+            <div class="list-group d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                <div class="list-group-item d-flex gap-3  ">
+
+                    <input class="form-check-input flex-shrink-0" type="checkbox" style="font-size: 1.375em;">
+                    <span class="pt-1 form-checked-content">
+
+
+                    <strong>{{ task.task }}</strong>
+
+                    </span>
+
+                    <div class="btn-group me-0 col-1 mb-1 mt-1 justify-content-end mx-auto">
+
+                        <a href="{{url_for('edit_task', id=task.id) }}"
+                           class="me-2"
+                        >
+                            <img src="static/assets/images/edit.png" class="img-fluid "
+                                 alt="https://www.flaticon.com/free-icons/edit">
+                        </a>
+
+                        <a href="{{url_for('delete_task', id=task.id) }}"
+                        >
+                            <img src="static/assets/images/remove.png" class="img-fluid"
+                                 alt="https://www.flaticon.com/free-icons/delete">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+            <a href="{{url_for('delete_tasks') }}"
+               class="btn me-0 d-grid gap-2 col-2 mb-4 mt-4 justify-content-center mx-auto btn-outline-warning "
+
+            >RESET
+            </a>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% include "footer.html" %}
+
+
+
+
+
+

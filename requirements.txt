@@ -1,0 +1,10 @@
+Bootstrap_Flask
+WTForms==3.1.1
+Flask_WTF
+Flask_Login
+Flask==2.3.2
+FLASK_CKEditor
+flask_sqlalchemy==3.0.5
+SQLAlchemy
+Werkzeug
+gunicorn==21.2.0
