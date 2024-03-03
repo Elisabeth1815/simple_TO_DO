@@ -1,26 +1,19 @@
 <!-- Footer -->
 
-
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-    <p class="col-md-4 mb-0 text-body-secondary">© 2024 Eliška Zegzulková</p>
-
-    <a href="/"
-       class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-    </a>
-
-<!--    <ul class="nav col-md-4 justify-content-end">-->
-<!--      <li class="nav-item"><a href="https://personal-portfolio-lw3a.onrender.com/"-->
-<!--                              class="nav-link px-2 text-body-secondary">Personal Portfolio</a></li>-->
-<!--    </ul>-->
-  </div>
-  </div>
-
-  <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="{{ url_for('static', filename='/js/scripts.js') }}"></script>
-
-</footer>
-
+<div class="mt-5 mb-5">
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    </div>
+                    <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Eliška Zegzulková</span>
+                </div>
+                <!-- Bootstrap core JS-->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Core theme JS-->
+                <script src="{{ url_for('static', filename='/js/scripts.js') }}"></script>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -51,7 +51,6 @@ class User(UserMixin, db.Model):
 
 with app.app_context():
 	db.create_all()
-	# db.drop_all()
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -121,7 +120,7 @@ def tasks_today():
 	tasks = result.scalars().all()
 
 	d = date.today()
-	today = d.strftime("%d.%m.%y")
+	today = d.strftime("%d.%m.%Y")
 
 	return render_template("tasks_today.html", all_tasks=tasks, current_user=current_user, today=today)
 

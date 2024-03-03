@@ -15,32 +15,33 @@
 </header>
 
 <div class="container">
+    <div class="d-flex flex-column p-4 gap-4">
 
-    <!-- Flask message for users registering twice -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p class="flash">{{ message }}</p>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+        <!-- Flask message for users registering twice -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p class="flash">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
 
-    <div class="col-lg-6 col-md-8 mx-auto">
-        {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        <div class="col-lg-6 col-md-8 mx-auto">
+            {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
+        </div>
+
+        <div class="col-lg-6 col-md-8 mb-10 mt-3 mb-3">
+            <h2>or REGISTER</h2>
+        </div>
+        <div class="col-lg-6 col-md-8 mx-auto d-grid gap-2 d-md-flex">
+            <a href="{{ url_for('register') }}"
+               class="btn btn-primary mb-1 "
+               role="button"
+            >Register</a>
+
+        </div>
     </div>
-
-    <div class="col-lg-6 col-md-8 mb-10 mt-3 mb-3">
-        <h2>or REGISTER</h2>
-    </div>
-    <div class="col-lg-6 col-md-8 mx-auto d-grid gap-2 d-md-flex">
-        <a href="{{ url_for('register') }}"
-           class="btn btn-primary mb-1 "
-           role="button"
-        >Register</a>
-
-    </div>
-
 </div>
 {% endblock %}
 
