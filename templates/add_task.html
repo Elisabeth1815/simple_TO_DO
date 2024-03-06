@@ -2,24 +2,21 @@
 {% block content %}
 {% include "header.html" %}
 
-
 <div class="container">
     <div class="col-lg-8 col-md-10 mt-2 mb-5 mx-auto">
-
         <div class="row g-0">
             <div class="col-md-1 mb-4">
                 <a href="{{url_for('tasks_today')}}">
-                    <img src="static/assets/images/double-check.gif" class="img-fluid rounded-start"
-                         alt="https://www.flaticon.com/free-animated-icons/tick">
+                    <img src="static/assets/images/checkmark.png" class="img-fluid rounded-start"
+                         alt="Checkmark icon">
                 </a>
             </div>
         </div>
 
-
         <div class="add_task">
             <form method="post" name="new_task">
                 <div class="input-group mb-3">
-                    <input name="task" type="text" class="form-control" placeholder="add task" aria-label="">
+                    <input name="task" type="text" class="form-control" placeholder="add task">
                     <button value="add_task"
                             name="add_task"
                             class="btn btn-outline-success"
@@ -33,12 +30,30 @@
                     </button>
                 </div>
 
-            </form>
+                <div class="col-md-1 mt-5 mb-4">
+                    <img src="static/assets/images/fountain-pen.png" class="img-fluid"
+                         alt="Fountain pen icon">
+                </div>
 
+                <div class="input-group mb-3">
+                    <input name="task_note" type="text" class="form-control" placeholder="add note" >
+                    <button value="add_task"
+                            name="add_task"
+                            class="btn btn-outline-success"
+                            role="button">ADD
+                    </button>
+
+                    <button value="delete_"
+                            name="delete_"
+                            class="btn btn-outline-danger"
+                            role="button">DELETE
+                    </button>
+
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
 
 {% include "footer.html" %}
 {% endblock %}

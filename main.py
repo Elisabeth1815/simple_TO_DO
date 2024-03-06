@@ -37,6 +37,7 @@ class Task(db.Model):
 	author_id = db.Column(db.Integer, db.ForeignKey("users_tasks.id"))
 	author = relationship("User", back_populates="tasks")
 	task = db.Column(db.Text, nullable=False)
+	task_note = db.Column(db.Text)
 
 
 # User table for registered users
@@ -132,6 +133,7 @@ def add_new_task():
 			new_task = Task(
 				author=current_user,
 				task=request.form["task"],
+				task_note=request.form["task_note"],
 			)
 			db.session.add(new_task)
 			db.session.commit()
@@ -140,6 +142,7 @@ def add_new_task():
 			return redirect(url_for('add_new_task'))
 
 		task = db.get_or_404(Task, None)
+		task_note = db.get_or_404(Task, None)
 
 	return render_template("add_task.html", current_user=current_user)
 
@@ -163,14 +166,25 @@ def delete_tasks():
 @app.route("/edit", methods=["GET", "POST"])
 def edit_task():
 	if request.method == "POST":
-		task_id = request.form["id"]
-		task_to_update = db.get_or_404(Task, task_id)
+		task = request.form["id"]
+		task_to_update = db.get_or_404(Task, task)
 		task_to_update.task = request.form["task"]
+
+		task_note = request.form["id"]
+		task_note_to_update = db.get_or_404(Task, task_note)
+		task_note_to_update.task_note = request.form["task_note"]
+
 		db.session.commit()
 		return redirect(url_for('tasks_today'))
-	task_id = request.args.get('id')
-	task_edited = db.get_or_404(Task, task_id)
-	return render_template("edit_task.html", task=task_edited, current_user=current_user)
+	task_changed = request.args.get('id')
+	task_edited = db.get_or_404(Task, task_changed)
+
+	task_note_changed = request.args.get('id')
+	task_note_edited = db.get_or_404(Task, task_note_changed)
+	return render_template("edit_task.html",
+	                       task=task_edited,
+	                       task_note=task_note_edited,
+	                       current_user=current_user)
 
 
 @app.route('/')
